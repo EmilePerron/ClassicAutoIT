@@ -1,0 +1,10 @@
+<route>
+    <description>This route starts right below Gadgetzan</description>
+    <targets>
+        <target>Roc</target>
+        <target>Fire Roc</target>
+        <target>Glasshide Basilisk</target>
+        <target>Scorpid Tail Lasher</target>
+        <target>Starving Blisterpaw</target>
+    </targets>
+</route>

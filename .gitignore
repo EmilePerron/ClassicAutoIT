@@ -1,0 +1,3 @@
+setup.conf
+logs/*
+!logs/.gitkeep

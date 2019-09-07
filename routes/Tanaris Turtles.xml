@@ -1,0 +1,7 @@
+<route>
+    <description>This route is locatedby the beach under Steamwheedle Port</description>
+    <movement>stationary</movement>
+    <targets>
+        <target>Steeljaw Snapper</target>
+    </targets>
+</route>
