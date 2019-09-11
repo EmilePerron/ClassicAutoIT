@@ -30,7 +30,7 @@ Func searchingLoop()
 	EndIf
 
 	; No target? Move to try and find one!
-	If (Not playerIsInCombat() And Not ennemyTargeted()) Then
+	If (Not playerInCombat() And Not ennemyTargeted()) Then
 		$movementType = getRouteMovementType()
 
 		Select

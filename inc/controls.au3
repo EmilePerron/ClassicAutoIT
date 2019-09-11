@@ -7,8 +7,9 @@ Local $_nextBreakAt = timestamp() + Random(3600, 10800)
 
 Func start()
    addInterfaceLog("Starting")
+   WinActivate("World of Warcraft")
    setState($STATE_IDLE)
-   setup()
+   ;setup()
 EndFunc
 
 Func stop()

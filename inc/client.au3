@@ -7,7 +7,7 @@ Func clientFocused($allowLoggedOut = False)
 	  Return False
    EndIf
 
-   Return $allowLoggedOut Or colorAtPositionMatches(276, 997, 0x95948E, 5)
+   Return $allowLoggedOut Or colorAtPositionMatches(0, 0, 0x008080, 1)
 EndFunc
 
 Func clientDimensions()
@@ -146,5 +146,5 @@ Func switchToActionBar()
 EndFunc
 
 Func isUnderwater()
-   Return colorAtPositionMatches(846, 130, 0x004D9B, 15) And colorAtPositionMatches(937, 127, 0xFFFFFF, 15) And colorAtPositionMatches(1084, 128, 0x363130, 15)
+   Return colorAtPositionMatches(846, 130, 0x004D9B, 15) And colorAtPositionMatches(937, 127, 0xFFFFFF, 15) And colorAtPositionMatches(1084, 128, 0x363130, 15) And Not colorAtPositionMatches(1007, 128, 0x363130, 15)
 EndFunc

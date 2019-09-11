@@ -1,7 +1,11 @@
 ; Defines helper methods to get information about the ENNEMY
 
 Func ennemyHealth()
-   Return clientBarPercentage(1080, 630, 0x00CA00)
+   Return getPercentageFromPixel(2, 0) * 100
+EndFunc
+
+Func ennemyMana()
+   Return getPercentageFromPixel(2, 1) * 100
 EndFunc
 
 Func ennemyTargeted()

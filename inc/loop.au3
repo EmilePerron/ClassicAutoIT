@@ -18,7 +18,7 @@ Func runLoop()
 		 Sleep(300)
 		 Send("{SPACE down}")
 		 Do
-			Sleep(300)
+			Sleep(50)
 		 Until (Not isUnderwater())
 		 Send("{SPACE up}")
 	  Else

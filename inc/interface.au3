@@ -12,7 +12,9 @@ Global $_runtimeLabel = Null
 Global $_routeDescriptionLabel = Null
 Global $_startButton = Null
 Global $_stopButton = Null
-Global $_copyTargetingMacroButton = Null
+Global $_createRouteButton = Null
+Global $_recordRouteButton = Null
+Global $_addMobToRouteButton = Null
 Global $_routeDropdown = Null
 Global $_profileDropdown = Null
 Global $_stopButton = Null
@@ -49,7 +51,9 @@ Func createInterface()
 	; Route group
 	$_routeDropdown = GuiCtrlCreateCombo("", 20, 34, 190, 21)
 	GUICtrlSetData($_routeDropdown, getAvailableRoutes())
-	$_copyTargetingMacroButton = GuiCtrlCreateButton("Copy targeting macro", 50, 88, 130, 22)
+	$_createRouteButton = GuiCtrlCreateButton("New", 20, 88, 45, 22)
+	$_recordRouteButton = GuiCtrlCreateButton("Record", 70, 88, 65, 22)
+	$_addMobToRouteButton = GuiCtrlCreateButton("Add mob", 140, 88, 70, 22)
 	$_routeDescriptionLabel = GuiCtrlCreateLabel("No route selected", 22, 64, 188, 16)
 
 	; Profile group
@@ -114,19 +118,23 @@ Func getStateLabel()
 EndFunc
 
 Func handleInterfaceInteractions()
-   $msg = GUIGetMsg()
-   Select
-      Case $msg = $GUI_EVENT_CLOSE
-         close()
-      Case $msg = $_startButton
-		 start()
-      Case $msg = $_stopButton
-		 stop()
-      Case $msg = $_routeDropdown
-		 updateRouteDescriptionLabel()
-      Case $msg = $_copyTargetingMacroButton
-		 copyTargetMacroText()
-   EndSelect
+	$msg = GUIGetMsg()
+	Select
+		Case $msg = $GUI_EVENT_CLOSE
+			close()
+		Case $msg = $_startButton
+			start()
+		Case $msg = $_stopButton
+			stop()
+		Case $msg = $_routeDropdown
+			updateRouteDescriptionLabel()
+		Case $msg = $_createRouteButton
+			createRoute()
+		Case $msg = $_recordRouteButton
+			startRecordingRoute()
+		Case $msg = $_addMobToRouteButton
+			addTargetToRoute()
+	EndSelect
 EndFunc
 
 Func addInterfaceLog($text)

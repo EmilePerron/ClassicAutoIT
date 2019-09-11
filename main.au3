@@ -1,4 +1,5 @@
 #include <GuiConstants.au3>
+#include <ButtonConstants.au3>
 #include <WinAPIFiles.au3>
 #include <FileConstants.au3>
 #include <File.au3>
@@ -15,6 +16,7 @@
 #include "inc/client.au3"
 #include "inc/route.au3"
 #include "inc/options.au3"
+#include "inc/setup.au3"
 #include "inc/player.au3"
 #include "inc/ennemy.au3"
 #include "inc/controls.au3"
@@ -25,11 +27,7 @@
 #include "loop/searching.au3"
 #include "inc/loop.au3"
 #include "inc/web.au3"
-
-setConfig("test", "value")
-setConfig("test2", "value is here")
-setConfig("test", "replaced value")
-
+Global Const $M_PI =  3.14159265358979323846
 
 createInterface()
 

@@ -1,11 +1,30 @@
 ; Defines helper methods to get information about the PLAYER
 
 Func playerHealth()
-   Return clientBarPercentage(718, 630, 0x00CA00, 2)
+   Return getPercentageFromPixel(1, 0) * 100
 EndFunc
 
 Func playerMana()
-   Return clientBarPercentage(718, 645, 0x000089, 2, 80)
+   Return getPercentageFromPixel(1, 1) * 100
+EndFunc
+
+Func playerPosition()
+	Return getPositionFromPixel(0, 1)
+EndFunc
+
+Func playerX()
+	$position = playerPosition()
+	Return $position[0]
+EndFunc
+
+Func playerY()
+	$position = playerPosition()
+	Return $position[1]
+EndFunc
+
+Func playerOrientation()
+	$position = playerPosition()
+	Return $position[2]
 EndFunc
 
 Func playerShouldEat()

@@ -7,6 +7,28 @@ Func colorAtPositionMatches($x, $y, $expectedColor, $tolerance = 30)
 	  And (Abs(_ColorGetGreen($pixelColor) - _ColorGetGreen($expectedColor)) <=  $tolerance)
 EndFunc
 
+Func getPercentageFromPixel($x, $y)
+	Local $pixelColor = PixelGetColor($x, $y)
+	Local $rgbColors = _ColorGetRGB($pixelColor)
+	Return $rgbColors[0] / 255
+EndFunc
+
+Func getPositionFromPixel($x, $y)
+	Local $pixelColor = PixelGetColor($x, $y)
+	Local $rgbColors = _ColorGetRGB($pixelColor)
+
+	Local $position[3]
+	$position[0] = ($rgbColors[0] / 255) * 100
+	$position[1] = ($rgbColors[1] / 255) * 100
+	$position[2] = ($rgbColors[2] / 255) * ($M_PI * 2)
+
+	Return $position
+EndFunc
+
+Func getDistanceBetweenPositions($x1, $y1, $x2, $y2)
+	Return Sqrt(($x2 - $x1) ^ 2 + ($y2 - $y1) ^ 2)
+EndFunc
+
 Func randomChance($successPercentage)
    Return Random(1, 100 / $successPercentage, 1) == 1
 EndFunc

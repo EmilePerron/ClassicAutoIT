@@ -1,7 +1,6 @@
 ; Checks to setup all the pre-requisites before we get started
 
 Func setup()
-	WinWaitActive("World of Wacraft")
 	setupTargetingMacro()
 EndFunc
 
@@ -14,10 +13,10 @@ Func setupTargetingMacro()
 	EndIf
 
 	Sleep(150)
-	sendChatCommand('DeleteMacro("' & $macroName & '")')
+	sendChatCommand('/run DeleteMacro("' & $macroName & '")')
 	Sleep(250)
-	sendChatCommand('CreateMacro("' & $macroName & '", "INV_MISC_QUESTIONMARK", "' & buildTargetMacroText() & '", nil)')
+	sendChatCommand('/run CreateMacro("' & $macroName & '", "INV_MISC_QUESTIONMARK", "' & buildTargetMacroText() & '", nil)')
 	Sleep(250)
-	sendChatCommand('PickupMacro("' & $macroName & '") PlaceAction(24)')
+	sendChatCommand('/run PickupMacro("' & $macroName & '") PlaceAction(24)')
 	Sleep(250)
 EndFunc
