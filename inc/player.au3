@@ -227,3 +227,52 @@ Func playerAttackRotation()
 	  Send("{F5}")
    EndIf
 EndFunc
+
+Func playerTurnTowardsPoint($x, $y)
+    Local $deltaX = $x - playerX()
+    Local $deltaY = $y - playerY()
+    Local $distance = getDistanceBetweenPositions(playerX(), playerY(), $x, $y)
+    Local $angle = ASin(Abs($deltaY) / Abs($distance))
+
+    If ($deltaX <= 0 And $deltaY >= 0) Then
+        $angle += 90
+    ElseIf ($deltaX >= 0 And $deltaY >= 0) Then
+        $angle += 180
+    ElseIf ($deltaX >= 0 And $deltaY <= 0) Then
+        $angle += 270
+    EndIf
+
+    Local $targetOrientation = (2 * $M_PI) * ($angle / 360)
+    Local $playerOrientation = playerOrientation()
+    Local $deltaOrientation = 0
+
+    If ($playerOrientation > $targetOrientation) Then
+        If ($playerOrientation - $targetOrientation <= $M_PI) Then
+            $deltaOrientation = $playerOrientation - $targetOrientation
+        Else
+            $deltaOrientation = ((2 * $M_PI) - ($playerOrientation - $targetOrientation)) * -1
+        EndIf
+    Else
+        If ($targetOrientation - $playerOrientation <= $M_PI) Then
+            $deltaOrientation = $targetOrientation - $playerOrientation
+        Else
+            $deltaOrientation = ((2 * $M_PI) - ($targetOrientation - $playerOrientation)) * -1
+        EndIf
+    EndIf
+
+    ; Return if there's no need to turn
+    If ($deltaOrientation == 0) Then
+        Return
+    EndIf
+
+    ; If the orientation delta is negative, turn right.
+    ; If it's positive, turn left.
+    Local $millisecondsPerFullTurn = 1500 ; @TODO: Figure out what that really is
+    Local $turningTime = (Abs($deltaOrientation) / (2 * $M_PI)) * $millisecondsPerFullTurn
+    Local $turningKey = deltaOrientation > 0 ? 'a' : 'd'
+
+    ; Do that turny thing!
+    Send("{" & $turningKey & " DOWN}")
+    Sleep($turningTime)
+    Send("{" & $turningKey & " UP}")
+EndFunc
