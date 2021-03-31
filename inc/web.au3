@@ -16,7 +16,7 @@ Func updateWebTracker($killCount, $stateLabel)
    $query &= "&mana=" & playerMana()
    $query &= "&state=" & $stateLabel
    $query &= "&killCount=" & $killCount
-   HttpPost("https://www.emileperron.com/bot/update.php", $query)
+   HttpPost("YOUR_API_ENDPOINT_URL", $query)
 
    $_webUpdateInProgress = False
 EndFunc
@@ -28,7 +28,7 @@ Func checkToUpdateWebTracker()
 EndFunc
 
 Func uploadScreenshot()
-   Local Const $remoteFilename = "/public_html/web/bot/screenshots/screenshot.jpg"
+   Local Const $remoteFilename = "YOUR_FTP_REMOTE_FILEPATH"
    Local Const $iW = @DesktopWidth, $iH = @DesktopHeight
    Local Const $quality = 40
    Local $filename = @ScriptDir & "\screenshot\" & timestamp() & ".jpg"
@@ -46,9 +46,9 @@ Func uploadScreenshot()
    _GDIPlus_ImageDispose($hImage2)
    _GDIPlus_Shutdown()
 
-   $server = 'emileperron.com'
-   $username = 'em1002_bot'
-   $pass = 'p0o9i8u7'
+   $server = 'YOUR_FTP_HOST'
+   $username = 'YOUR_FTP_USERNAME'
+   $pass = 'YOUR_FTP_PWD'
    $Open = _FTP_Open('MyFTP Control')
    $Conn = _FTP_Connect($Open, $server, $username, $pass)
    $Ftpp = _FTP_FilePut($Conn, $filename, $remoteFilename)
