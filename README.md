@@ -1,4 +1,4 @@
-# ClassicAutoIT
+# ClassicAutoIT: a bot for WoW Classic
 
 This is the codebase for a simple bot I had created for World of Wacraft Classic.  
 Developed in [AutoIT](https://www.autoitscript.com/site/), a BASIC-like scripting language designed for automating the Windows GUI and general scripting.
